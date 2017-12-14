@@ -1,12 +1,17 @@
 <body class="nav-md">
   <div class="container body">
-    <div class="main_container">
+    <!-- logged in -->
+    <div class="main_container" *ngIf="user">
       <!-- navbar -->
       <app-navbar></app-navbar>
       <!-- page content -->
       <div class="right_col" role="main">
-          <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
       </div>
+    </div>
+    <!-- logged out -->
+    <div class="main_container" *ngIf="!user">
+      You're not signed in...
     </div>
   </div>
   <!-- js -->
