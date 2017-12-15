@@ -14,7 +14,7 @@
       </div>
       <div class="profile_info">
         <span>Hello,</span>
-        <h2>User</h2>
+        <h2>{{ user }}</h2>
       </div>
     </div>
     <br />
@@ -51,7 +51,7 @@
               <i class="fa fa-user"></i> Profile
             </a>
           </li><li>
-            <a routerLink="add">
+            <a (click)="logout()">
               <i class="fa fa-lock"></i> Log Out
             </a>
           </li>

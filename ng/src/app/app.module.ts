@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import * as firebase from 'firebase';
+import { FormsModule } from '@angular/forms';
 
 // components
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { ViewContactsComponent } from './pages/view-contacts/view-contacts.compo
 import { SingleContactComponent } from './pages/single-contact/single-contact.component';
 import { AddContactComponent } from './pages/add-contact/add-contact.component';
 import { JsIncludesComponent } from './components/js-includes/js-includes.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 // firebase config 
 const firebaseConfig = {
@@ -30,7 +32,7 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   }, {
-    path: '*',
+    path: '',
     component: HomeComponent
   }, {
     path: 'profile',
@@ -52,11 +54,13 @@ const routes: Routes = [
     ViewContactsComponent,
     SingleContactComponent,
     AddContactComponent,
-    JsIncludesComponent
+    JsIncludesComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [
     {
@@ -67,10 +71,9 @@ const routes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  user: any;
+  user: any = 'test';
   constructor() {
     // init firebase
     firebase.initializeApp(firebaseConfig);
-    this.user = firebase.auth().currentUser;
   }
 }
