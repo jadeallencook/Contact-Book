@@ -15,6 +15,8 @@ import { SingleContactComponent } from './pages/single-contact/single-contact.co
 import { AddContactComponent } from './pages/add-contact/add-contact.component';
 import { JsIncludesComponent } from './components/js-includes/js-includes.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 // firebase config 
 const firebaseConfig = {
@@ -35,8 +37,14 @@ const routes: Routes = [
     path: '',
     component: HomeComponent
   }, {
-    path: 'profile',
+    path: 'view/:uid',
     component: SingleContactComponent
+  }, {
+    path: 'favorites',
+    component: FavoritesComponent
+  }, {
+    path: 'profile',
+    component: ProfileComponent
   }, {
     path: 'contacts',
     component: ViewContactsComponent
@@ -55,7 +63,9 @@ const routes: Routes = [
     SingleContactComponent,
     AddContactComponent,
     JsIncludesComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    FavoritesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

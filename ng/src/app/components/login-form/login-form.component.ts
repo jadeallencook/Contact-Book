@@ -15,17 +15,13 @@ export class LoginFormComponent implements OnInit {
   }
 
   login() {
-    firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(() => {
-      console.log(firebase.auth().currentUser);
-    }).catch((error) => {
+    firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch((error) => {
       console.log(error);
     });
   }
 
   create() {
-    firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(() => {
-      this.login();
-    }).catch((error) => {
+    firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch((error) => {
       console.log(error);
     });
   }
