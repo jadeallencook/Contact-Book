@@ -10,19 +10,23 @@ export class LoginFormComponent implements OnInit {
 
   email:string = '';
   password:string = '';
+  error:string = '';
 
   constructor() {
   }
 
   login() {
-    firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch((error) => {
-      console.log(error);
+    firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch((msg) => {
+      msg = msg.message;
+      this.error = msg;
+      console.log(this.error);
     });
   }
 
   create() {
-    firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch((error) => {
-      console.log(error);
+    firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch((msg) => {
+      msg = msg.message;
+      this.error = msg;
     });
   }
 

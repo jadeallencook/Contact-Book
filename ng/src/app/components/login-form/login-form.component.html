@@ -1,11 +1,22 @@
-<div class="login-panel">
-  <h1>Contact Book</h1>
-  <input type="text" class="form-control" placeholder="email" [(ngModel)]="email" />
-  <br />
-  <input type="password" class="form-control" placeholder="password" [(ngModel)]="password" />
-  <br />
-  <div class="btn-container">
-    <button class="btn" (click)="login()">Log In</button>
-    <button class="btn btn-primary" (click)="create()">Create Account</button>
+<div class="login_wrapper">
+  <div class="animate form login_form">
+    <section class="login_content">
+      <form>
+        <h1>Login Form</h1>
+        <div>
+          <input type="text" class="form-control" placeholder="Username" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" />
+        </div>
+        <div>
+          <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" />
+        </div>
+        <p class="error-msg" *ngIf="error.length > 0">{{ error }}</p>
+        <button class="btn btn-primary" (click)="login()">Log in</button>
+        <button class="btn btn-default" (click)="create()">Create Account</button>
+        <br /><br />
+        <div>
+          <p>© 2018 All Rights Reserved</p>
+        </div>
+      </form>
+    </section>
   </div>
 </div>

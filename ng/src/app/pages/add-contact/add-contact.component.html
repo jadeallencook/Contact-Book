@@ -1,3 +1,40 @@
-<h1>Add Contact</h1>
-
-<p>You can add a contact on this page!</p>
+<div class="x_panel">
+  <div class="x_title">
+    <h1>Add Contact</h1>
+    <div class="clearfix"></div>
+  </div>
+  <div class="x_content">
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+      <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Full Name" [(ngModel)]="contact.name">
+      <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+      <input type="text" class="form-control" id="inputSuccess3" placeholder="Zipcode" [(ngModel)]="contact.zipcode">
+      <span class="fa fa-compass form-control-feedback right" aria-hidden="true"></span>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+      <input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email" [(ngModel)]="contact.email">
+      <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+      <input type="text" class="form-control" id="inputSuccess5" placeholder="Phone" [(ngModel)]="contact.phone">
+      <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+    </div>
+    <label for="heard">Category :</label>
+    <select id="heard" class="form-control" required="" [(ngModel)]="contact.category">
+      <option value="">Choose..</option>
+      <option value="press">Press</option>
+      <option value="government">Government</option>
+      <option value="education">Education</option>
+      <option value="citizen">Citizen</option>
+    </select>
+    <br />
+    <label for="message">Additional Notes :</label>
+    <textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20"
+      data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+      data-parsley-validation-threshold="10" [(ngModel)]="contact.notes[0]">
+    </textarea>
+    <br />
+    <span class="btn btn-primary" (click)="add()">Submit</span>
+  </div>
+</div>

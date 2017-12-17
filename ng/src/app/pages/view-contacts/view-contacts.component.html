@@ -1,3 +1,50 @@
-<h1>View Contacts</h1>
+<div class="row">
+  <div class="col-md-12">
+    <div class="x_panel">
 
-<p>These are all of your stored contacts!</p>
+      <!-- header -->
+      <h1>Contacts</h1>
+
+      <!-- profile container -->
+      <div class="x_content">
+        <div class="row">
+
+          <!-- profile -->
+          <div class="col-md-4 col-sm-4 col-xs-12 profile_details" *ngFor="let contact of contacts">
+            <div class="well profile_view">
+              <div class="col-sm-12">
+                <div class="col-xs-12">
+                  <h2>{{ contact.name }}</h2>
+                  <br />
+                  <p class="last-note">
+                    <strong>Last Note: </strong> {{ contact.latestNote }}
+                  </p>
+                  <br />
+                  <ul class="list-unstyled">
+                    <li *ngIf="contact.zipcode"><i class="fa fa-building"></i> Zipcode: {{ contact.zipcode }}</li>
+                    <li *ngIf="contact.phone"><i class="fa fa-phone"></i> Phone: {{ contact.phone }}</li>
+                  </ul>
+                  <br />
+                </div>
+              </div>
+              <div class="col-xs-12 bottom text-center">
+                <div class="col-xs-12 col-sm-6 emphasis">
+                  <a type="button" class="btn btn-success btn-xs" href="mailto:{{ contact.email }}" *ngIf="contact.email">
+                    <i class="fa fa-comments-o"></i> Send Email
+                  </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 emphasis">
+                  <button type="button" class="btn btn-primary btn-xs" routerLink="/view/{{ contact.uid }}">
+                    <i class="fa fa-user"> </i> View Profile
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
