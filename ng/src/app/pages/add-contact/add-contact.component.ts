@@ -19,9 +19,14 @@ export class AddContactComponent implements OnInit {
     // update contact info
     this.contact.owner = firebase.auth().currentUser.email;
     // cache note
-    let note:any = '';
+    let note: any = '';
     if (!this.contact.notes[0]) note = 'Customer was added ' + new Date().toDateString() + ' by ' + this.contact.owner;
     else note = this.contact.notes[0];
+    note = { 
+      date: new Date().toDateString(),
+      msg: note,
+      owner: this.contact.owner
+    };
     this.contact.notes = [];
     // push contact to firebase
     firebase.database().ref().child('contacts').push(this.contact).then((event) => {

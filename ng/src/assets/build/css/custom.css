@@ -2937,7 +2937,6 @@ ul.messages li .message_date {
     text-align: right
 }
 ul.messages li .message_wrapper {
-    margin-left: 50px;
     margin-right: 40px
 }
 ul.messages li .message_wrapper h4.heading {

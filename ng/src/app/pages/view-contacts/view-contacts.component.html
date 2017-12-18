@@ -22,7 +22,7 @@
                   <br />
                   <ul class="list-unstyled">
                     <li *ngIf="contact.zipcode"><i class="fa fa-building"></i> Zipcode: {{ contact.zipcode }}</li>
-                    <li *ngIf="contact.phone"><i class="fa fa-phone"></i> Phone: {{ contact.phone }}</li>
+                    <li *ngIf="contact.phone"><i class="fa fa-phone"></i> Phone: {{ formatPhoneNumber(contact.phone) }}</li>
                   </ul>
                   <br />
                 </div>

@@ -1,3 +1,59 @@
-<p>
-  single-contact works!
-</p>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+          <h3>{{ contact.name }}</h3>
+          <ul class="list-unstyled user_data">
+            <li>
+              <i class="fa fa-map-marker user-profile-icon"></i> {{ contact.zipcode }}
+            </li>
+            <li>
+              <i class="fa fa-briefcase user-profile-icon"></i> {{ contact.category }}
+            </li>
+            <li>
+              <i class="fa fa-phone user-profile-icon"></i> {{ contact.phone }}
+            </li>
+            <li class="m-top-xs">
+              <i class="fa fa-envelope user-profile-icon"></i>
+              <a href="http://www.kimlabs.com/profile/" target="_blank">{{ contact.email }}</a>
+            </li>
+          </ul>
+          <a class="btn btn-success">
+            <i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+          <br>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <div class="profile_title">
+            <div class="col-md-12">
+              <h2>Notes</h2>
+            </div>
+          </div>
+          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <div id="myTabContent" class="tab-content">
+              <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                <!-- start recent activity -->
+                <ul class="messages">
+                  <li *ngFor="let note of contact.notes.reverse()">
+                    <div class="message_date">
+                      <p class="month">{{ note.date }}</p>
+                    </div>
+                    <div class="message_wrapper">
+                      <h4 class="heading">{{ note.owner }}</h4>
+                      <blockquote class="message">{{ note.msg }}</blockquote>
+                      <br />
+                    </div>
+                  </li>
+                </ul>
+                <!-- end recent activity -->
+              </div>
+            </div>
+          </div>
+          <textarea class="form-control" placeholder="Write a note..." [(ngModel)]="note"></textarea>
+          <br />
+          <button class="btn btn-primary" (click)="addNote()">Submit Note</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
