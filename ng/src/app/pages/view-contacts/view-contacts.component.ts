@@ -25,6 +25,17 @@ export class ViewContactsComponent implements OnInit {
     });
   }
 
+  addToFavorites(uid) {
+    const favRef = 'profiles/' + firebase.auth().currentUser.uid + '/favorites';
+    firebase.database().ref(favRef).once('value').then((snapshot) => {
+      let favorites = [];
+      if (snapshot.val()) favorites = snapshot.val();
+      if (favorites.indexOf(uid) === -1) favorites.push(uid);
+      else favorites.splice(favorites.indexOf(uid), 1);
+      firebase.database().ref(favRef).set(favorites);
+    });
+  }
+
   formatPhoneNumber(num) {
     var s2 = ("" + num).replace(/\D/g, '');
     var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);

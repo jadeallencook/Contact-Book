@@ -12,7 +12,7 @@
           <!-- profile -->
           <div class="col-md-4 col-sm-4 col-xs-12 profile_details" *ngFor="let contact of contacts">
             <div class="well profile_view">
-              <div class="col-sm-12">
+              <div class="col-sm-12" routerLink="/view/{{ contact.uid }}">
                 <div class="col-xs-12">
                   <h2>{{ contact.name }}</h2>
                   <br />
@@ -21,8 +21,12 @@
                   </p>
                   <br />
                   <ul class="list-unstyled">
-                    <li *ngIf="contact.zipcode"><i class="fa fa-building"></i> Zipcode: {{ contact.zipcode }}</li>
-                    <li *ngIf="contact.phone"><i class="fa fa-phone"></i> Phone: {{ formatPhoneNumber(contact.phone) }}</li>
+                    <li *ngIf="contact.zipcode">
+                      <i class="fa fa-building"></i> Zipcode: {{ contact.zipcode }}</li>
+                    <li *ngIf="contact.phone">
+                      <i class="fa fa-phone"></i> Phone: {{ formatPhoneNumber(contact.phone) }}</li>
+                    <li *ngIf="!contact.phone">
+                      <i class="fa fa-phone"></i> Phone: N/A</li>
                   </ul>
                   <br />
                 </div>
@@ -34,8 +38,8 @@
                   </a>
                 </div>
                 <div class="col-xs-12 col-sm-6 emphasis">
-                  <button type="button" class="btn btn-primary btn-xs" routerLink="/view/{{ contact.uid }}">
-                    <i class="fa fa-user"> </i> View Profile
+                  <button type="button" class="btn btn-danger btn-xs" (click)="addToFavorites(contact.uid)">
+                    <i class="fa fa-heart"> </i> Favorites
                   </button>
                 </div>
               </div>

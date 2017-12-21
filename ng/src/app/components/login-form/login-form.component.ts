@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import { Profile } from '../../models/profile'
 
 @Component({
   selector: 'app-login-form',
@@ -19,12 +20,16 @@ export class LoginFormComponent implements OnInit {
     firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch((msg) => {
       msg = msg.message;
       this.error = msg;
-      console.log(this.error);
     });
   }
 
   create() {
-    firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch((msg) => {
+    firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(() => {
+      let profile = new Profile();
+      profile.email = firebase.auth().currentUser.email;
+      profile.uid = firebase.auth().currentUser.uid;
+      firebase.database().ref('profiles/' + profile.uid).set(profile);
+    }).catch((msg) => {
       msg = msg.message;
       this.error = msg;
     });
