@@ -40,6 +40,9 @@ const routes: Routes = [
     path: 'view/:uid',
     component: SingleContactComponent
   }, {
+    path: 'edit/:uid',
+    component: AddContactComponent
+  }, {
     path: 'favorites',
     component: FavoritesComponent
   }, {

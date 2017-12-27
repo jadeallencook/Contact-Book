@@ -19,6 +19,7 @@ export class SingleContactComponent implements OnInit {
       this.uid = params['uid'];
       firebase.database().ref('contacts/' + this.uid).on('value', (snapshot) => {
         const contact = snapshot.val();
+        this.contact.uid = this.uid;
         this.contact.name = contact.name;
         this.contact.email = contact.email;
         this.contact.zipcode = contact.zipcode;
