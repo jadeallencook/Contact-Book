@@ -28,6 +28,42 @@
         </div>
       </div>
 
+      <div class="col-sm-4 col-xs-12 profile_details" *ngFor="let contact of favorites">
+        <div class="well profile_view">
+          <div class="col-sm-12" routerLink="/view/{{ contact.uid }}" class="selectable-profile">
+            <div class="col-xs-12">
+              <h2>{{ contact.name }}</h2>
+              <br />
+              <p class="last-note">
+                <strong>Last Note: </strong> {{ contact.lastNote }}
+              </p>
+              <br />
+              <ul class="list-unstyled">
+                <li *ngIf="contact.zipcode">
+                  <i class="fa fa-building"></i> Zipcode: {{ contact.zipcode }}</li>
+                <li *ngIf="contact.phone">
+                  <i class="fa fa-phone"></i> Phone: {{ formatPhoneNumber(contact.phone) }}</li>
+                <li *ngIf="!contact.phone">
+                  <i class="fa fa-phone"></i> Phone: N/A</li>
+              </ul>
+              <br />
+            </div>
+          </div>
+          <div class="col-xs-12 bottom text-center">
+            <div class="col-xs-12 col-sm-6 emphasis">
+              <a type="button" class="btn btn-success btn-xs" href="mailto:{{ contact.email }}" *ngIf="contact.email">
+                <i class="fa fa-comments-o"></i> Send Email
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 emphasis">
+              <button type="button" class="btn btn-danger btn-xs" (click)="removeFromFavorites(contact.uid)">
+                <i class="fa fa-heart"> </i> Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
